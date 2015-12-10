@@ -1,3 +1,4 @@
+'''
 import os.path
 import warnings
 
@@ -44,3 +45,4 @@ def lazy_object(location):
 RatingField = lazy_object('djangoratings.fields.RatingField')
 AnonymousRatingField = lazy_object('djangoratings.fields.AnonymousRatingField')
 Rating = lazy_object('djangoratings.fields.Rating')
+'''
