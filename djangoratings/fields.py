@@ -86,6 +86,9 @@ class RatingManager(object):
         if not (self.votes and self.score):
             return 0
         return float(self.score)/self.votes
+
+    def get_star_rating(self):
+        return self.get_real_rating()
     
     def get_rating_for_user(self, user, ip_address=None, cookies={}):
         """get_rating_for_user(user, ip_address=None, cookie=None)
