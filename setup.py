@@ -9,7 +9,7 @@ tests_require = [
 
 setup(
     name='django-ratings',
-    version=".".join(map(str, __import__('djangoratings').__version__)),
+    version=".".join(map(str, (0, 3, 7))),
     author='David Cramer',
     author_email='dcramer@gmail.com',
     description='Generic Ratings in Django',
