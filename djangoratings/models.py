@@ -1,10 +1,9 @@
 from datetime import datetime
 
+from django.conf import settings
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import fields as generic
-from django.contrib.auth import get_user_model
-User = get_user_model()
 
 try:
     from django.utils.timezone import now
@@ -18,7 +17,7 @@ class Vote(models.Model):
     object_id       = models.PositiveIntegerField()
     key             = models.CharField(max_length=32)
     score           = models.IntegerField()
-    user            = models.ForeignKey(User, blank=True, null=True, related_name="votes")
+    user            = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True, related_name="votes")
     ip_address      = models.GenericIPAddressField()
     cookie          = models.CharField(max_length=32, blank=True, null=True)
     date_added      = models.DateTimeField(default=now, editable=False)
