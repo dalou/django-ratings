@@ -65,8 +65,8 @@ class Score(models.Model):
         return u"%s scored %s with %s votes" % (self.content_object, self.score, self.votes)
 
 class SimilarUser(models.Model):
-    from_user       = models.ForeignKey(User, related_name="similar_users")
-    to_user         = models.ForeignKey(User, related_name="similar_users_from")
+    from_user       = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="similar_users")
+    to_user         = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="similar_users_from")
     agrees          = models.PositiveIntegerField(default=0)
     disagrees       = models.PositiveIntegerField(default=0)
     exclude         = models.BooleanField(default=False)
@@ -80,7 +80,7 @@ class SimilarUser(models.Model):
         print u"%s %s similar to %s" % (self.from_user, self.exclude and 'is not' or 'is', self.to_user)
 
 class IgnoredObject(models.Model):
-    user            = models.ForeignKey(User)
+    user            = models.ForeignKey(settings.AUTH_USER_MODEL)
     content_type    = models.ForeignKey(ContentType)
     object_id       = models.PositiveIntegerField()
     
